@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+.App {
+    text-align: center;
+}
+
+.ml10 {
+    margin-right: 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+:root {
+    --color-primary: #003147;
+    --color-secondary: #03a9f4;
+    --color-white: #fff;
+    --color-light-gray: #f5f5f5;
+    --status-delivered: #8de02c;
+    --status-pending: #f9ca3f;
+    --status-return: #f00;
+    --status-inprogress: #1795ce;
+    --status-sended: #3aa07c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.navigation {
+    position: fixed !important;
+    width: 300px;
+    height: 100%;
+    background: var(--color-primary);
+    transition: 0.5s;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.overflow-x {
+    overflow-x: auto;
+}
+
+.navigation.active {
+    width: 60px;
+}
+
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+}
+
+.navigation ul li:hover {
+    background: var(--color-secondary);
+}
+
+.tablinks.active {
+    background: var(--color-secondary);
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 20px;
+}
+
+.navigation ul li:nth-child(1):hover {
+    background: transparent
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--color-white);
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.navigation ul li a .icon {
+    color: var(--color-white);
+    font-size: 24px;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    white-space: nowrap;
+}
+
+.main.active {
+    width: calc(100% - 60px);
+    left: 60px;
+
+}
+
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--color-light-gray);
+    transition: 0.5s;
+}
+
+.main .topbar {
+    width: 100%;
+    background: var(--color-white);
+    height: 60px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    line-height: 60px;
+    font-size: 24px;
+    text-align: center;
+    color: #111;
+    display: none;
+}
+
+.search {
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+
+.search label {
+    position: relative;
+    width: 100%;
+}
+
+.search label input {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+.search label {
+    position: absolute;
+    left: 9px;
+    top: -2px;
+    font-size: 20px;
+}
+
+.user {
+    position: relative;
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.cardBox .card {
+    position: relative;
+    background: var(--color-white);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.cardBox .card .numbers {
+    position: relative;
+    font-size: 2em;
+    font-weight: 500px;
+}
+
+.cardBox .card .cardName {
+    color: #999;
+}
+
+.cardBox .card .iconBox {
+    font-size: 2.5em;
+    color: var(--color-secondary);
+}
+
+/* Работает в Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-secondary);
+}
+
+/* Работает в Chrome, Edge и Safari */
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--color-secondary);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 2px;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-row .textInput{
+    width: 60%;
+}
+
+.details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 10px;
+    min-height: 490px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 2fr 1fr;
+}
+
+.details .recentOrders {
+    position: relative;
+    /* display: grid; */
+    min-height: 490px;
+    background: var(--color-white);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+a {
+    cursor: pointer;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cardHeader a {
+    text-decoration: none;
+}
+
+.cardHeader h2 {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    position: relative;
+    padding: 5px 10px;
+    background: var(--color-secondary);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    overflow-x: hidden;
+}
+
+.details table thead td {
+    font-weight: 600;
+}
+.colorBlock{
+    width: 5px;
+    height: 5px;
+    background: #000;
+}
+.details .recentOrders table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .recentOrders table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.details .recentOrders table tbody tr:hover {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.details .recentOrders table tr td {
+    padding: 9px 5px;
+}
+
+.details .recentOrders table thead tr td:last-child,
+.details .recentOrders table tbody tr td:last-child {
+    text-align: right;
+}
+
+.details .recentOrders table thead tr td:nth-child(2),
+.details .recentOrders table tbody tr td:nth-child(2) {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.details .recentOrders table thead tr td:nth-child(3),
+.details .recentOrders table tbody tr td:nth-child(3) {
+    text-align: center;
+}
+
+.status {
+    position: relative;
+    padding: 2px 4px;
+    color: var(--color-white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 300px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.delivered {
+    background: var(--status-delivered);
+}
+
+.pending {
+    background: var(--status-pending);
+}
+
+.return {
+    background: var(--status-return);
+}
+
+.inprogress {
+    background: var(--status-inprogress);
+}
+
+.sended {
+    background: var(--status-sended);
+}
+
+.details .recentCustomers {
+    position: relative;
+    min-height: 490px;
+    background: var(--color-white);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.categoryBlock .imgBox,
+.details .recentCustomers .imgBox {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.categoryBlock .imgBox img,
+.details .recentCustomers .imgBox img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.details .recentCustomers table tr:hover,
+.details .recentCustomers table tr:hover td h4 span {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.details .recentCustomers table tr td {
+    padding: 7px 10px;
+}
+
+.details .recentCustomers table tr td h4 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2em;
+}
+
+.details .recentCustomers table tr td h4 span {
+    font-size: 14px;
+}
+
+.tabcontent {
+    display: none;
+}
+
+#Dashboard {
+    display: block;
+}
+
+
+.orders table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.orders table thead td {
+    font-weight: 600;
+}
+
+.orders table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.orders table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.orders table tbody tr:hover {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.ordersFilters {
+    background: var(--color-white);
+    margin: 20px;
+    border-radius: 10px;
+    height: 80px;
+}
+
+.orders,
+.customers {
+    background: var(--color-white);
+    margin: 20px;
+    padding: 20px;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    min-height: calc(100vh - 200px);
+}
+
+.orders table tr td {
+    padding: 9px 5px;
+}
+
+.orders table thead tr td:last-child,
+.orders table tbody tr td:last-child {
+    text-align: right;
+}
+
+.orders table thead tr td:nth-child(2),
+.orders table tbody tr td:nth-child(2) {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.orders table thead tr td:nth-child(3),
+.orders table tbody tr td:nth-child(3) {
+    text-align: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 35px;
+    right: 50px;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.customers table thead td {
+    font-weight: 600;
+}
+
+.customers .imgBox {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.customers .imgBox img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.customers table tbody tr:hover {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.customers table tr td {
+    padding: 7px 10px;
+
+}
+
+table tr {
+    cursor: pointer;
+}
+
+.customers table tr td h4 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2em;
+}
+
+.customers table thead tr td:last-child,
+.customers table tbody tr td:last-child {
+    text-align: right;
+}
+
+.customers table thead tr td:nth-child(2),
+.customers table tbody tr td:nth-child(2),
+.customers table thead tr td:nth-child(5),
+.customers table tbody tr td:nth-child(5) {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.customers table thead tr td:nth-child(3),
+.customers table tbody tr td:nth-child(3),
+.customers table thead tr td:nth-child(6),
+.customers table tbody tr td:nth-child(6) {
+    text-align: center;
+}
+
+.customers table thead tr td:nth-child(7),
+.customers table tbody tr td:nth-child(7) {
+    text-align: left;
+}
+
+.customers table tr td h4 span {
+    font-size: 14px;
+}
+
+.form {
+    text-align: left;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0 25%;
+    gap: 20px;
+}
+
+.kontakt {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.statusSelect {
+    padding: 0 10px;
+    height: 30px;
+    margin-left: 20px;
+    border-radius: 15px;
+    color: #fff;
+    border: none;
+}
+
+.statusSelect option:hover {
+    background-color: transparent;
+}
+
+.color-secondary {
+    color: var(--color-secondary);
+}
+
+.imageInput {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--color-secondary);
+    height: 200px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.imageDescription {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imageDescription span {
+    margin-left: 10px;
+}
+
+.closeImage {
+    cursor: pointer;
+}
+
+.closeImage:hover {
+    color: var(--color-secondary);
+}
+
+.inLine input {
+    margin-left: 10px;
+}
+
+.inLine p {
+    margin-top: 10px;
+}
+
+.kontakt h3 {
+    margin-bottom: 0;
+}
+
+.form input,
+select {
+    height: 40px;
+    padding-left: 10px;
+}
+
+.form hr {
+    opacity: 0.6;
+}
+
+.form textarea {
+    height: 80px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.MainContainer {
+    padding: 0 10%;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,103 @@
+@media(max-width: 992px) {
+    .toggle{
+        display: block;
+    }
+    .navigation {
+        left: -300px !important;
+    }
+
+    .navigation.active {
+        left: 0 !important;
+        width: 300px !important;
+    }
+
+    .main {
+        width: 100% !important;
+        left: 0 !important;
+    }
+    .cardHeader{
+        display: grid;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cardHeader h2{
+        display: flex;
+        justify-content: center;
+    }
+    .cardHeader a, .cardHeader div{
+        margin-top: 15px;
+    }
+    .main.active {
+        width: calc(100% - 300px) !important;
+        left: 300px !important;
+    }
+
+    .cardBox {
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-gap: 20px;
+    }
+    .form {
+        text-align: left;
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0 25%;
+        gap: 20px;
+    }
+}
+
+@media(max-width: 768px) {
+    .details {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+
+    .cardHeader h2 {
+        font-weight: 600 !important;
+        font-size: 18px !important;
+    }
+}
+
+@media(max-width: 480px) {
+    .cardBox {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+
+    .details .recentOrders {
+        overflow-x: auto !important;
+    }
+
+    .details .recentOrders table {
+        width: 600px !important;
+    }
+
+    .navigation {
+        width: 100% !important;
+        left: -100% !important;
+        z-index: 1000 !important;
+    }
+
+    .navigation.active {
+        width: 100% !important;
+        left: 0 !important;
+    }
+
+    .toggle.active {
+        z-index: 10000 !important;
+    }
+
+    .toggle.active {
+        color: #fff !important;
+        position: absolute !important;
+        transition: 0.5s !important;
+        right: 10px !important;
+    }
+    .form {
+        text-align: left;
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0 10%;
+        gap: 20px;
+    }
+}
